@@ -1,9 +1,10 @@
 const express = require("express");
 const puppeteer = require("puppeteer");
+const port = process.env.PORT || 9101;
 
 
 const app = express();
-app.set("port", 9101);
+app.set("port", port);
 app.use(express.json())
 
 const browserP = puppeteer.launch({
@@ -47,4 +48,4 @@ app.post("/", (req,res) => {
     res.send("Estado del Documento: "+req.body.documento);
 });
 
- app.listen(app.get("port"), () => console.log("app running on port", app.get("port")));
+ app.listen(app.get("port"), () => console.log("app running on port", port));
