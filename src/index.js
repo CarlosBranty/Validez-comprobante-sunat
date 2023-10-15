@@ -1,6 +1,6 @@
 const express = require("express");
 const puppeteer = require("puppeteer");
-const port = process.env.PORT || 9101;
+const port = process.env.PORT || 3000;
 
 
 const app = express();
@@ -29,7 +29,7 @@ const browserP = puppeteer.launch({
           await page.type("#fechaEmision",body_filtros.fechaemision);
           await page.type("#monto",body_filtros.importe);
           await page.click("#btnConsultar");
-          await page.waitForTimeout(3000);
+          await page.waitForTimeout(6000);
           let salida = await page.evaluate(() => {
             var elemento = document.querySelectorAll('.list-group-item-text'); 
             return {
